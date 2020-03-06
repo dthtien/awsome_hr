@@ -1,0 +1,118 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+
+$border-width: 1px;
+$reverse: true;
+
+.tree {
+  @if $reverse {
+    transform: rotate(180deg);
+    transform-origin: 50%;
+  }
+}
+
+.tree ul {
+  position: relative;
+  padding: 1em 0;
+  white-space: nowrap;
+  margin: 0 auto;
+  text-align: center;
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.tree li {
+  display: inline-block; // need white-space fix
+  vertical-align: top;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: 1em .5em 0 .5em;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: $border-width solid #ccc;
+    width: 50%;
+    height: 1em;
+  }
+  &::after {
+    right: auto;
+    left: 50%;
+    border-left: $border-width solid #ccc;
+  }
+  &:only-child::after,
+  &:only-child::before {
+    display: none;
+  }
+  &:only-child {
+    padding-top: 0;
+  }
+  &:first-child::before,
+  &:last-child::after {
+    border: 0 none;
+  }
+  &:last-child::before{
+    border-right: $border-width solid #ccc;
+    border-radius: 0 5px 0 0;
+  }
+  &:first-child::after{
+    border-radius: 5px 0 0 0;
+  }
+}
+
+.tree ul ul::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: $border-width solid #ccc;
+  width: 0;
+  height: 1em;
+}
+
+.tree li a {
+  border: $border-width solid #ccc;
+  padding: .5em .75em;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  color: #333;
+  position: relative;
+  top: $border-width;
+  @if $reverse {
+    transform: rotate(180deg);
+  }
+}
+
+.tree li a:hover,
+.tree li a:hover+ul li a {
+  background: #e9453f;
+  color: #fff;
+  border: $border-width solid #e9453f;
+}
+
+.tree li a:hover + ul li::after,
+.tree li a:hover + ul li::before,
+.tree li a:hover + ul::before,
+.tree li a:hover + ul ul::before{
+  border-color:  #e9453f;
+}
