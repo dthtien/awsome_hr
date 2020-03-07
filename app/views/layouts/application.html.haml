@@ -8,31 +8,4 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    .tree
-      %ul
-        %li
-          %a{:href => "#"} Parent
-          %ul
-            %li
-              %a{:href => "#"} Child
-              %ul
-                %li
-                  %a{:href => "#"} Grand Child
-                %li
-                  %a{:href => "#"} Grand Child
-                  %ul
-                    %li
-                      %a{:href => "#"} Grand Child
-                    %li
-                      %a{:href => "#"} Grand Child
-            %li
-              %a{:href => "#"} Child
-              %ul
-                %li
-                  %a{:href => "#"} Grand Child
-                  %ul
-                    %li
-                      %a{:href => "#"} Grand Grand Child
-                %li
-                  %a{:href => "#"} Grand Child
     = yield

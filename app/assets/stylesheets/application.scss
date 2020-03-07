@@ -15,7 +15,7 @@
 */
 
 $border-width: 1px;
-$reverse: true;
+$reverse: false;
 
 .tree {
   @if $reverse {
