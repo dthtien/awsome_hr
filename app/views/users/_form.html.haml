@@ -1,0 +1,20 @@
+%h1= (@user.new_record? ? 'Create' : 'Edit') + ' User'
+= form_for @user, html: {class: 'form'} do |f|
+  %div
+    = f.label :name, class: 'label'
+    .control
+      = f.text_field :name, autofocus: true,
+  %div
+    = f.label :title
+    = f.text_field :title
+  %div
+    = f.label :username
+    = f.text_field :username
+  %div
+    = f.label :password
+    = f.password_field :password
+  %div
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+  %div
+    = f.submit "Save"

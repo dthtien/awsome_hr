@@ -1,0 +1,17 @@
+.container.c-users__show
+  %h4.title
+    %strong Title:
+    = @user.title
+  %h4.subtitle
+    %strong Name:
+    = @user.name
+  %h4.subtitle
+    %strong Username:
+    = @user.username
+  .tree
+    %ul
+      %li
+        = link_to @user.name, @user
+        - if @user.employees.present?
+          %ul
+            = render @user.employees

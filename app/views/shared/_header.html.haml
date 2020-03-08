@@ -1,0 +1,22 @@
+%nav.navbar{"aria-label" => "main navigation", :role => "navigation"}
+  .navbar-brand
+    %a.navbar-item.title{:href => root_path}
+      Awsome HR
+    %a.navbar-burger.burger{"aria-expanded" => "false", "aria-label" => "menu", "data-target" => "navbarBasicExample", :role => "button"}
+      %span{"aria-hidden" => "true"}
+      %span{"aria-hidden" => "true"}
+      %span{"aria-hidden" => "true"}
+  #navbarBasicExample.navbar-menu
+    .navbar-start
+      .navbar-item.has-dropdown.is-hoverable
+        - if logged_in?
+          %a.navbar-link.subtitle.is-5
+            = current_user.name
+          .navbar-dropdown
+            = link_to 'Profile', current_user, class: 'navbar-item'
+            = link_to 'Logout', authentication_path, method: :delete, class: 'navbar-item'
+    - unless logged_in?
+      .navbar-end
+        .navbar-item
+          .buttons
+            = link_to 'Login/Sign up', new_authentication_path, class: 'button is-primary'

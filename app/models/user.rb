@@ -1,6 +1,9 @@
 class User < ApplicationRecord
+  has_secure_password
   belongs_to :manager, class_name: 'User'.freeze, optional: true
   has_many :employees, foreign_key: :manager_id, class_name: 'User'.freeze
+
+  validates :username, presence: true, uniqueness: true
 
   after_create  :increment_counter_cache
   after_destroy :decrement_counter_cache

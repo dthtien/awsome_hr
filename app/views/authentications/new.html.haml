@@ -1,0 +1,12 @@
+.columns.is-mobile
+  = form_for @authentication, url: authentication_path, html: { class: 'column is-half is-offset-one-quarter'} do |f|
+    %div.field
+      = f.label :username, class: 'label'
+      .control
+        = f.text_field :username, class: 'input'
+    %div.field
+      = f.label :password, class: 'label'
+      .control
+        = f.password_field :password, class: 'input'
+    %div.control
+      = f.submit "Signup/Login", class: 'button is-link'

@@ -1,0 +1,5 @@
+%li
+  = link_to user.name, user
+  - if user.employees.present?
+    %ul
+      = render user.employees

@@ -13,6 +13,6 @@ user_ids.each_with_index do |id, index|
     name: "name #{index}",
     username: "name_#{index}" ,
     manager_id: index.zero? ? nil : (0..index).to_a.sample,
-    role: index.zero? ? index : 1
+    role: index.zero? ? index : 1,
   )
 end

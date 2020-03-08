@@ -42,6 +42,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 gem "haml-rails", "~> 2.0"
+gem 'bcrypt', '~> 3.1.13'
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
