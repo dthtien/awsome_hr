@@ -39,6 +39,7 @@ $reverse: false;
 
 
 .tree {
+  overflow: auto;
   @if $reverse {
     transform: rotate(180deg);
     transform-origin: 50%;

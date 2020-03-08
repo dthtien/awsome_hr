@@ -11,7 +11,7 @@
   .tree
     %ul
       %li
-        = link_to @user.name, @user
+        = link_to @user.name || @user.username, @user
         - if @user.employees.present?
           %ul
             = render @user.employees
