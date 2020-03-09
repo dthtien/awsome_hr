@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_03_08_161931) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.bigint "manager_id"
-    t.integer "employees_count"
+    t.integer "employees_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "role"

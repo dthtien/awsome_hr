@@ -8,11 +8,13 @@
 
 return if User.any?
 user_ids = (0..100).to_a
-user_ids.each_with_index do |id, index|
-  User.create(
+user_ids.each do |index|
+  User.create!(
     name: "name #{index}",
     username: "name_#{index}" ,
-    manager_id: index.zero? ? nil : (0..index).to_a.sample,
+    manager_id: index.zero? ? nil : (1..index).to_a.sample,
     role: index.zero? ? index : 1,
+    password: '123123',
+    password_confirmation: '123123'
   )
 end

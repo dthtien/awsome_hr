@@ -7,6 +7,10 @@ class User < ApplicationRecord
   has_many :employees, foreign_key: :manager_id, class_name: User.name
 
   validates :username, presence: true, uniqueness: true
+  validates :employees_count, numericality: {
+                                only_integer: true,
+                                less_than_or_equal_to: 10
+                              }
 
   scope :needed_fields, -> { select(:id, :name, :username, :manager_id) }
 

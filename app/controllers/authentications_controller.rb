@@ -1,5 +1,6 @@
 class AuthenticationsController < ApplicationController
   skip_before_action :authenticate_user!, except: %i[destroy]
+  before_action :unauthenticate_user!, only: :new
 
   def new
     @authentication = Authentication.new
