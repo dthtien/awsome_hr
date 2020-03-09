@@ -1,0 +1,21 @@
+.columns.is-mobile
+  %form.column.is-half.is-offset-one-quarter
+    .columns.is_mobile
+      .column
+        .field
+          .control
+            .select
+              = select_tag :type, options_for_select(UsersOperations::Index::TYPES)
+      .column
+        .field
+          .control
+            %input.input{:placeholder => "Enter username", name: 'q', value: params[:q]}/
+      .column
+        .control
+          %button.button.is-info
+            Search
+%h3.has-text-centered.mt-5.title Orgainisation chart
+
+.tree
+  -# %ul
+  = parse_tree_elements @index.records
