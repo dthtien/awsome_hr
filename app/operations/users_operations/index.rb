@@ -55,7 +55,7 @@ module UsersOperations
       when EMPLOYEE_SEARCH
         scope.find_by(id: params[:user]).self_and_descendants.hash_tree
       when MANAGER_SEARCH
-        user.ordered_ancestors
+        user.ordered_ancestors.hash_tree
       when SHOW_WITH_LIMIT
         scope.limit(params[:q].presence).hash_tree
       when REATIONSHIP_CHECK

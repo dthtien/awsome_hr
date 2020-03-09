@@ -29,7 +29,7 @@ class UserSelectors {
         },
         cache: true
       },
-      placeholder: 'Search manager username'
+      placeholder: 'Search username'
     });
   }
 }
