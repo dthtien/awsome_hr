@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def index
     @index = UsersOperations::Index.new(params)
-
     respond_to do |format|
       format.html
       format.json { render json: @users }
@@ -17,7 +16,7 @@ class UsersController < ApplicationController
   def edit; end
 
   def show
-    @user = User.includes(:employees).find_by(id: params[:id]) || current_user
+    @user = UserPresenter.new(User.find_by(id: params[:id]) || current_user)
   end
 
   def create

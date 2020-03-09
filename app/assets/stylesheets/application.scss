@@ -14,6 +14,18 @@
 *= require_self
 */
 
+.select2-container{
+  min-width: 200px !important;
+  .select2-selection {
+    height: 40px !important;
+    border-color: #dbdbdb !important;
+    padding-top: 5px;
+    &__arrow {
+      top: 5px !important;
+    }
+  }
+}
+
 $border-width: 1px;
 $reverse: false;
 .container {

@@ -2,11 +2,11 @@ module ApplicationHelper
   def parse_tree_elements(data)
     elements = '<ul>'
 
-    data.each do |record, childs|
+    data.each do |record, children|
       elements += <<-HTML.strip
         <li>
-          <a> #{record.name} </a>
-          #{parse_tree_elements(childs) if childs.present?}
+          <a href=#{user_path(record)}> #{record.name} </a>
+          #{parse_tree_elements(children) if children.present?}
         </li>
       HTML
     end

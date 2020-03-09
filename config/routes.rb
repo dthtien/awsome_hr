@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#show'
+  root 'users#index'
   resources :users do
     collection do
       resource :search, only: %i[show]

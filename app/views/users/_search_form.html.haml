@@ -1,0 +1,28 @@
+.columns.is-mobile
+  %form.column.is-half.is-offset-one-quarter
+    .columns.is_mobile
+      .column
+        .field
+          .control
+            .select
+              = select_tag :type, options_for_select(UsersOperations::Index::TYPES, params[:type]), {class: 'js-users__types-selector'}
+      .column.js-users__comparing-user{class: "#{'is-hidden' if params[:type] != UsersOperations::Index::REATIONSHIP_CHECK}"}
+        .field
+          .control
+            = select_tag :user1, [], { class: 'js-users__users-selector p-10', required: params[:type] == UsersOperations::Index::REATIONSHIP_CHECK}
+      .column.js-users__comparing-user{class: "#{'is-hidden' if params[:type] != UsersOperations::Index::REATIONSHIP_CHECK}"}
+        .field
+          .control
+            = select_tag :user2, [], { class: 'js-users__users-selector p-10', required: params[:type] == UsersOperations::Index::REATIONSHIP_CHECK}
+      .column.js-users__single-select{class: "#{'is-hidden' unless [UsersOperations::Index::EMPLOYEE_SEARCH, UsersOperations::Index::MANAGER_SEARCH, nil].include? params[:type]}"}
+        .field
+          .control
+            = select_tag :user, [], { class: 'js-users__users-selector p-10', required: [UsersOperations::Index::EMPLOYEE_SEARCH, UsersOperations::Index::MANAGER_SEARCH, nil].include?(params[:type])}
+      .column.js-users_normal-input{class: "#{'is-hidden' if params[:type] != UsersOperations::Index::SHOW_WITH_LIMIT}"}
+        .field
+          .control
+            %input.input{:placeholder => "Enter", name: 'q', value: params[:q] || 25, type: :number}
+      .column
+        .control
+          %button.button.is-info
+            Search

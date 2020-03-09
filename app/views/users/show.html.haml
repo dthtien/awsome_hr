@@ -10,9 +10,7 @@
     = @user.username
   %h5.has-text-centered.mt-5.title Orgainisation chart
   .tree
-    %ul
-      %li
-        = link_to @user.name || @user.username, @user
-        - if @user.employees.present?
-          %ul
-            = render @user.employees
+    = parse_tree_elements @user.descendants
+  %h5.has-text-centered.mt-5.title Manager charts
+  .tree
+    = parse_tree_elements @user.ancestors

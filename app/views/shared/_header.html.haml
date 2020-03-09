@@ -6,17 +6,21 @@
       %span{"aria-hidden" => "true"}
       %span{"aria-hidden" => "true"}
       %span{"aria-hidden" => "true"}
-  #navbarBasicExample.navbar-menu
-    .navbar-start
-      .navbar-item.has-dropdown.is-hoverable
-        - if logged_in?
+  .navbar-menu
+    - if logged_in?
+      .navbar-start
+        .navbar-item.has-dropdown.is-hoverable
           %a.navbar-link.subtitle.is-5
             = current_user.name || current_user.username
           .navbar-dropdown
             = link_to 'Profile', current_user, class: 'navbar-item'
             = link_to 'Logout', authentication_path, method: :delete, class: 'navbar-item'
-    - unless logged_in?
-      .navbar-end
+    .navbar-end
+      - if logged_in?
+        .navbar-item
+          .buttons
+            = link_to 'New user', new_user_path,  class: 'button is-primary'
+      - else
         .navbar-item
           .buttons
             = link_to 'Login/Sign up', new_authentication_path, class: 'button is-primary'

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  # TODO: implement my all design
   acts_as_tree parent_column_name: :manager_id
 
   belongs_to :manager, class_name: User.name, optional: true
@@ -14,6 +15,10 @@ class User < ApplicationRecord
 
   def self.search(keyword)
     where('username iLIKE ? OR name iLIKE ?', "%#{keyword}%", "%#{keyword}%")
+  end
+
+  def ordered_ancestors
+    self.class.where(id: self_and_ancestors_ids)
   end
 
   private
