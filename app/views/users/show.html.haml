@@ -8,6 +8,8 @@
   %h4.subtitle
     %strong Username:
     = @user.username
+  .buttons
+    = link_to 'Edit', [:edit, @user],  class: 'button is-primary'
   %h5.has-text-centered.mt-5.title Orgainisation chart
   .tree
     = parse_tree_elements @user.descendants

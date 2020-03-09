@@ -31,3 +31,11 @@
 
 en:
   hello: "Hello world"
+  authentications:
+    create:
+      success: 'Login successfully!'
+  users:
+    create:
+      success: 'Create successfully!'
+    update:
+      success: 'Update successfully!'
