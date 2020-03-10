@@ -25,6 +25,10 @@ class User < ApplicationRecord
     self.class.where(id: self_and_ancestors_ids)
   end
 
+  def showing_name
+    name || username
+  end
+
   private
 
   def decrement_counter_cache
