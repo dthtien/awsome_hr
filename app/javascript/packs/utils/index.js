@@ -21,8 +21,8 @@ class UserSelectors {
         processResults: function (data) {
           const results = data.map(item =>({
             id: item.id,
-            name: item.name,
-            text: item.name
+            name: item.name || item.username,
+            text: item.name || item.username
           }));
           return { results };
         },
