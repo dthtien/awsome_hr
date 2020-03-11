@@ -4,12 +4,6 @@ class UserPresenter < ApplicationPresenter
   end
 
   def ancestors
-    @ancestors ||= User.where(id: self_and_ancestors_ids).hash_tree
-  end
-
-  def children
-    employees.includes(:employees).map do |employee|
-      UserPresenter.new employee
-    end
+    @ancestors ||= ordered_ancestors.hash_tree
   end
 end

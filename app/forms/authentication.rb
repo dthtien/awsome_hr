@@ -24,6 +24,7 @@ class Authentication
 
     if @user.persisted?
       raise 'Invalid username or password' unless user.authenticate(password)
+
       true
     else
       @user.password = password
