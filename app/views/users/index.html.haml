@@ -10,6 +10,6 @@
     = @index.user2.showing_name
 - else
   .tree
-    = parse_tree_elements @index.records
+    = parse_tree_elements @index.records.hash_tree
 
 = javascript_pack_tag 'users'

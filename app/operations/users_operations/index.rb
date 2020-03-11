@@ -4,7 +4,9 @@ module UsersOperations
     MANAGER_SEARCH = '1'.freeze
     REATIONSHIP_CHECK = '2'.freeze
     SHOW_WITH_LIMIT = '3'.freeze
-
+    MANAGER = 'manager'.freeze
+    SUBORDINATE = 'subordinate'.freeze
+    NON_RELATIVE = 'non-relative'.freeze
     TYPES = [
       [
         'Find employee of',
@@ -53,23 +55,23 @@ module UsersOperations
     def parse_records
       case params[:type]
       when EMPLOYEE_SEARCH
-        scope.find_by(id: params[:user]).self_and_descendants.hash_tree
+        scope.find_by(id: params[:user]).self_and_descendants
       when MANAGER_SEARCH
-        user.ordered_ancestors.hash_tree
+        user.ordered_ancestors
       when SHOW_WITH_LIMIT
-        scope.limit(params[:q].presence).hash_tree
+        scope.limit(params[:q].presence)
       when REATIONSHIP_CHECK
         with_relationship
       else
-        scope.hash_tree
+        scope
       end
     end
 
     def with_relationship
-      return 'manager' if user1.ancestor_of?(user2)
-      return 'subordinate' if user1.descendant_of?(user2)
+      return MANAGER if user1.ancestor_of?(user2)
+      return SUBORDINATE if user1.descendant_of?(user2)
 
-      'non-relative'
+      NON_RELATIVE
     end
   end
 end

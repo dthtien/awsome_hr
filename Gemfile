@@ -44,6 +44,13 @@ group :development do
 end
 gem "haml-rails", "~> 2.0"
 gem 'bcrypt', '~> 3.1.13'
+
+group :development, :test do
+  # Note that rspec-rails 4.0 is still a beta release
+  gem 'rspec-rails', '~> 4.0.0.beta'
+  gem 'factory_bot_rails', '~> 5.1.1'
+end
+
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
