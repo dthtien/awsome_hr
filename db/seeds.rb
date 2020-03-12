@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 return if User.any?
-user_ids = (0..100).to_a
+user_ids = (0..9999).to_a
 user_ids.each do |index|
   User.create!(
     name: "name #{index}",

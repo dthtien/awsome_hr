@@ -1,6 +1,8 @@
 = render 'search_form'
-%h3.has-text-centered.mt-5.title Orgainisation chart
-
+%h3.has-text-centered.mt-5.title
+  Orgainisation chart
+  - if params[:type] == UsersOperations::Index::SHOW_WITH_LIMIT || params[:type].blank?
+    = "(Showing #{params[:per_page] || User::DEFAULT_PER_PAGE} nodes)"
 - if params[:type] == UsersOperations::Index::REATIONSHIP_CHECK
   %h5.title.has-text-centered
     = @index.user1.showing_name

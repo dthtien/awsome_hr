@@ -21,7 +21,11 @@
       .column.js-users_normal-input{class: "#{'is-hidden' if params[:type] != UsersOperations::Index::SHOW_WITH_LIMIT}"}
         .field
           .control
-            %input.input{:placeholder => "Enter", name: 'q', value: params[:q] || 25, type: :number}
+            %input.input{:placeholder => 'Enter per page', name: :per_page, value: params[:per_page] || User.per_page, type: :number}
+      .column.js-users_normal-input{class: "#{'is-hidden' if params[:type] != UsersOperations::Index::SHOW_WITH_LIMIT}"}
+        .field
+          .control
+            %input.input{:placeholder => 'Enter page', name: :page, value: params[:page], type: :number}
       .column
         .control
           %button.button.is-info

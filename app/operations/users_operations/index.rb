@@ -59,11 +59,11 @@ module UsersOperations
       when MANAGER_SEARCH
         user.ordered_ancestors
       when SHOW_WITH_LIMIT
-        scope.limit(params[:q].presence)
+        scope.page(params[:page]).per(params[:per_page])
       when REATIONSHIP_CHECK
         with_relationship
       else
-        scope
+        scope.per
       end
     end
 

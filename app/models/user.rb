@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Paginable
   has_secure_password
   # TODO: implement my all design
   acts_as_tree parent_column_name: :manager_id
