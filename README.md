@@ -6,3 +6,4 @@
   ```
   bundle exec rspec
   ```
+- Pagination: Please checkout to the branch `pagination` for the pagination version
